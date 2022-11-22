@@ -1,0 +1,107 @@
+<div>
+  <div class="container">
+    <div class="col-8 offset-2 mt-5">
+      <div
+        class="alert"
+        [ngClass]="{
+          'alert-danger': !isFormValid,
+          'alert-success': isFormValid
+        }"
+        *ngIf="message"
+      >
+        {{ message }}
+      </div>
+      <img
+        src="https://drive.google.com/uc?export=view&id=1hvRAGrdq0SqFBZApx2--IcuDf-DOmOBH"
+      />
+      <h6>Hello there, Sign in to continue</h6>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="">
+        <div class="mb-3 form-group">
+          <label for="email" class="form-label text-secondary"> Email </label>
+          <input
+            type="text"
+            class="form-control custom-text-color shadow-none"
+            formControlName="email"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              loginForm.get('email').touched &&
+              loginForm.get('email').hasError('required')
+            "
+            >email is required</small
+          >
+          <!-- <small
+            class="text-danger"
+            *ngIf="
+              loginForm.get('email').touched &&
+              loginForm.get('email').hasError('required')
+            "
+            >email is required</small
+          > -->
+        </div>
+        <div class="mb-3 form-group">
+          <label for="password" class="form-label text-secondary"
+            >Password</label
+          >
+          <input
+            type="password"
+            class="form-control custom-text-color shadow-none"
+            id="password"
+            formControlName="password"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              loginForm.get('password')?.touched &&
+              loginForm.get('password')?.hasError('required')
+            "
+            >Password is required
+          </small>
+          <small
+            class="text-danger"
+            *ngIf="
+              loginForm.get('password')?.touched &&
+              loginForm.get('password')?.hasError('minlength')
+            "
+            >Password length Min of 8 Characters
+          </small>
+          <small
+            class="text-danger"
+            *ngIf="
+              loginForm.get('password')?.touched &&
+              loginForm.get('password')?.hasError('passwordValidator')
+            "
+            >// Min 1 uppercase, 1 lower case and a digit. Total length >= 8
+          </small>
+        </div>
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input shadow-none"
+            id="exampleCheck1"
+          />
+          <label class="form-check-label" for="exampleCheck1">
+            <small class="text-secondary"
+              >By creating or loggigng into an account, you are agreeing with
+              our <b>Terms & Conditions</b> and <b>Privary Policies</b></small
+            >
+          </label>
+        </div>
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            class="btn align-middle custom-button-color custom-button-bg-color"
+            [disabled]="!loginForm.valid"
+            [ngClass]="{
+              'custom-button-bg-color-after': loginForm.valid,
+              'custom-text-color-after': loginForm.valid
+            }"
+          >
+            <b>Next</b>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.error-label {
+  color: red;
+}
+
+.custom-text-color {
+  color: #5d6bbd;
+}
+
+.custom-button-bg-color {
+  background-color: #d1d5ec;
+}
+
+.custom-text-color-after {
+  color: white;
+}
+
+.custom-button-bg-color-after {
+  background-color: #2437a6;
+}
+
+.custom-button-color {
+  color: #2437a6;
+}
+
+.form-check-input:checked {
+  background-color: #2437a6 !important;
+  border: 0;
+}
+.form-check-input:focus,
+.label::after,
+label.form-check-label:focus,
+.form-check-input::after,
+.form-check-input:not(:disabled):not(.disabled):active:focus {
+  color: black;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 0 0 0.1rem #2437a6 !important;
+}

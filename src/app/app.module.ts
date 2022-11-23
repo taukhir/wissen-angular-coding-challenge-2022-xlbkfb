@@ -7,13 +7,15 @@ import { HelloComponent } from './hello.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app.routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { TokenInterceptor } from './services/api-interceptor-service';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'logout', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -32,5 +34,8 @@ const routes: Routes = [
     WelcomeComponent,
   ],
   bootstrap: [AppComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
 })
 export class AppModule {}

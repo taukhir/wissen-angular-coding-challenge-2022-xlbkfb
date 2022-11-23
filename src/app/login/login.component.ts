@@ -46,9 +46,10 @@ export class LoginComponent implements OnInit {
       const name = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
       this.authenticationService.login(name, password).subscribe({
-        next: (result: HttpResponse<any>) => {
+        next: (result) => {
           console.log('result', result);
           sessionStorage.setItem('isAuthenticated', 'true');
+          sessionStorage.setItem('access-token', result.token);
           this.message = 'Successfully logged in';
           this.isFormValid = true;
           this.router.navigateByUrl('/welcome');

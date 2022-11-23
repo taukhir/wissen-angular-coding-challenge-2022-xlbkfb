@@ -16,10 +16,18 @@ export class WelcomeComponent implements OnInit {
   constructor(public userService: UserService) {}
 
   ngOnInit() {
+    /*
+     * interceptors can be used to append token for every token
+     */
     this.userService.getUsers().subscribe((data) => {
       this.users = data.data;
       console.log(data);
     });
+  }
+
+  destroySession() {
+    sessionStorage.removeItem('access-token');
+    sessionStorage.setItem('isAuthenticated', 'false');
   }
 
   ngOnDestroy() {}

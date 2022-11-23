@@ -1,7 +1,7 @@
 <!-- Header component can be created and this nav bar code can be reused-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="welcome">Wissen</a>
+    <a class="navbar-brand" routerLink="/welcome">Wissen</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -20,23 +20,18 @@
             class="nav-link"
             routerLinkActive="active"
             aria-current="page"
-            routerLink="welcome"
+            routerLink="/welcome"
             >Home</a
           >
         </li>
       </ul>
-      <!-- <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
     </div>
     <div class="nav navbar-nav navbar-right">
-      <a class="nav-link" routerLinkActive="active" routerLink="logout"
+      <a
+        class="nav-link"
+        (click)="destroySession()"
+        routerLinkActive="active"
+        routerLink="/logout"
         >Logout</a
       >
     </div>

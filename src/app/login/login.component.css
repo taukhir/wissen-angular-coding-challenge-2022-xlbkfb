@@ -36,3 +36,11 @@ label.form-check-label:focus,
   border: 0;
   box-shadow: 0 0 0 0.1rem #2437a6 !important;
 }
+
+.field-icon {
+  float: right;
+  left: -15px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}

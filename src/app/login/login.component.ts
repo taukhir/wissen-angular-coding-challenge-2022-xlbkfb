@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   AbstractControl,
@@ -18,6 +18,7 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('#password') password: ElementRef;
   loginForm: FormGroup;
   submitted = false;
   message: string = '';
@@ -61,6 +62,17 @@ export class LoginComponent implements OnInit {
         complete: () => {},
       });
     }
+  }
+
+  togglePassword() {
+    // // toggle the type attribute
+    // const type =
+    //   this.password.nativeElement.getAttribute('type') === 'password'
+    //     ? 'text'
+    //     : 'password';
+    // this.password.nativeElement.setAttribute('type', type);
+    // // toggle the eye slash icon
+    // this.classList.toggle('fa-eye-slash');
   }
 
   // implement the username validator. Min 6 characters and no digits, special chars

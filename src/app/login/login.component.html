@@ -1,3 +1,7 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+/>
 <div>
   <div class="container">
     <div class="col-8 offset-2 mt-5">
@@ -31,6 +35,14 @@
             "
             >email is required</small
           >
+          <small
+            class="text-danger"
+            *ngIf="
+              loginForm.get('email').touched &&
+              loginForm.get('email').hasError('minlength')
+            "
+            >Min len 6</small
+          >
           <!-- <small
             class="text-danger"
             *ngIf="
@@ -49,7 +61,17 @@
             class="form-control custom-text-color shadow-none"
             id="password"
             formControlName="password"
+            #password
           />
+          <span
+            (click)="
+              password.type = password.type == 'password' ? 'text' : 'password'
+            "
+            class="fa fa-fw field-icon toggle-password"
+            [ngClass]="
+              password.type == 'password' ? ' fa-eye' : ' fa-eye-slash'
+            "
+          ></span>
           <small
             class="text-danger"
             *ngIf="
@@ -72,7 +94,7 @@
               loginForm.get('password')?.touched &&
               loginForm.get('password')?.hasError('passwordValidator')
             "
-            >// Min 1 uppercase, 1 lower case and a digit. Total length >= 8
+            >Min 1 uppercase, 1 lower case and a digit. Total length >= 8
           </small>
         </div>
         <div class="mb-3 form-check">

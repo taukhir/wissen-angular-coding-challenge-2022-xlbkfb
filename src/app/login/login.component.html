@@ -79,7 +79,8 @@
           <input
             type="checkbox"
             class="form-check-input shadow-none"
-            id="exampleCheck1"
+            id="cb"
+            formControlName="cb"
           />
           <label class="form-check-label" for="exampleCheck1">
             <small class="text-secondary"
@@ -95,7 +96,7 @@
             [disabled]="!loginForm.valid"
             [ngClass]="{
               'custom-button-bg-color-after': loginForm.valid,
-              'custom-text-color-after': loginForm.valid
+              'text-light': loginForm.valid
             }"
           >
             <b>Next</b>

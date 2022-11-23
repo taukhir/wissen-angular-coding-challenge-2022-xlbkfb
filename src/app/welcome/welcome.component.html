@@ -1,5 +1,69 @@
-<h3>Welcome to Wissen Coding Challenge!</h3>
+<!-- Header component can be created and this nav bar code can be reused-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="welcome">Wissen</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            aria-current="page"
+            routerLink="welcome"
+            >Home</a
+          >
+        </li>
+      </ul>
+      <!-- <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+    </div>
+    <div class="nav navbar-nav navbar-right">
+      <a class="nav-link" routerLinkActive="active" routerLink="logout"
+        >Logout</a
+      >
+    </div>
+  </div>
+</nav>
 
-
-Your login details: <br>
-<p>Username: {{user?.username}}</p>
+<!-- Used to display users data in table-->
+<div class="m-5">
+  <h3>Welcome to Wissen Coding Challenge!</h3>
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">Name</th>
+        <th scope="col">Year</th>
+        <th scope="col">Color</th>
+        <th scope="col">Pantone value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <!-- <th scope="row">1</th> -->
+        <td>{{ user.name }}</td>
+        <td>{{ user.year }}</td>
+        <td>{{ user.color }}</td>
+        <td>{{ user.pantone_value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

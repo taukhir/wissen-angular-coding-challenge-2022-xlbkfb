@@ -12,6 +12,7 @@ import {
  * Modify the login component and the login template to collect login details and add the validators as necessary
  */
 import { AuthenticationService } from '../services/authentication.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
       const name = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
       this.authenticationService.login(name, password).subscribe({
-        next: (result) => {
+        next: (result: HttpResponse<any>) => {
           console.log('result', result);
           sessionStorage.setItem('isAuthenticated', 'true');
           this.message = 'Successfully logged in';

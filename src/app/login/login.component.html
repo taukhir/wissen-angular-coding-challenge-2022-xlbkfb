@@ -17,7 +17,7 @@
       <h6>Hello there, Sign in to continue</h6>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="">
         <div class="mb-3 form-group">
-          <label for="email" class="form-label text-secondary"> Email </label>
+          <label for="email" class="form-label text-secondary"> User </label>
           <input
             type="text"
             class="form-control custom-text-color shadow-none"
@@ -29,7 +29,7 @@
               loginForm.get('email').touched &&
               loginForm.get('email').hasError('required')
             "
-            >email is required</small
+            >username is required</small
           >
           <small
             class="text-danger"
@@ -39,14 +39,14 @@
             "
             >Min len 6</small
           >
-          <!-- <small
+          <small
             class="text-danger"
             *ngIf="
               loginForm.get('email').touched &&
-              loginForm.get('email').hasError('required')
+              loginForm.get('email').hasError('userName')
             "
-            >email is required</small
-          > -->
+            >no digits are allowed</small
+          >
         </div>
         <div class="mb-3 form-group">
           <label for="password" class="form-label text-secondary"

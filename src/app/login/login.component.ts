@@ -8,11 +8,11 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication.service';
+import { AppValidator } from '../services/appvalidator';
 /**
  * Modify the login component and the login template to collect login details and add the validators as necessary
  */
-import { AuthenticationService } from '../services/authentication.service';
-import { HttpResponse } from '@angular/common/http';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -33,7 +33,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // setup the loginform and validators
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.minLength(6)]],
+      email: [
+        '',
+        [Validators.required, Validators.minLength(6), AppValidator.userName],
+      ],
       password: ['', [Validators.required, Validators.minLength(8)]],
       cb: [false, Validators.required],
     });
@@ -63,19 +66,6 @@ export class LoginComponent implements OnInit {
         complete: () => {},
       });
     }
-  }
-
-  // implement the username validator. Min 6 characters and no digits, special chars
-  usernameValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const val = control.value;
-      if (val) {
-        // const inValid = values.includes(val);
-        // return inValid ? null : { mobile: 'inValid' };
-        // return true;
-      }
-      return null;
-    };
   }
 
   // implement the password validator

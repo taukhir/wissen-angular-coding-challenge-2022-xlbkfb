@@ -43,4 +43,5 @@ label.form-check-label:focus,
   margin-top: -25px;
   position: relative;
   z-index: 2;
+  color: #d1d5ec;
 }

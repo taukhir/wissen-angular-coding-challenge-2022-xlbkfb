@@ -88,7 +88,7 @@
             class="text-danger"
             *ngIf="
               loginForm.get('password')?.touched &&
-              loginForm.get('password')?.hasError('passwordValidator')
+              loginForm.get('password')?.hasError('password')
             "
             >Min 1 uppercase, 1 lower case and a digit. Total length >= 8
           </small>

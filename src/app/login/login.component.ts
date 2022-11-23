@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit {
         '',
         [Validators.required, Validators.minLength(6), AppValidator.userName],
       ],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: [
+        '',
+        [Validators.required, Validators.minLength(8), AppValidator.password],
+      ],
       cb: [false, Validators.required],
     });
   }
@@ -66,18 +69,5 @@ export class LoginComponent implements OnInit {
         complete: () => {},
       });
     }
-  }
-
-  // implement the password validator
-  // Min 1 uppercase, 1 lower case and a digit. Total length >= 8
-  passwordValidator(control: AbstractControl): ValidationErrors | null {
-    const val = control.value;
-    if (val) {
-      const regex =
-        /(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$/;
-      const isValid = regex.test(val);
-      return isValid ? null : { email: 'inValid' };
-    }
-    return null;
   }
 }
